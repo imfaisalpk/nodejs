@@ -1,25 +1,48 @@
+const http = require("http");
 
-const EventEmitter = require('events');
+
+const server = http.createServer((req,res)=>{
+    if(req.url === "/"){
+        res.write("Hello Pakistan!!");
+        res.end();
+    }
+    else if (req.url === "/mfaisal/courses"){
+        res.write(JSON.stringify([1,2,3]));
+        res.end();
+    }
+});
+
+// server.on("connection",(socket)=>{
+//     console.log("New Connection...");
+// });
+
+
+server.listen(3000);
+console.log("Listening on port 3000...");
+
+
+
+// const EventEmitter = require('events');
 
 // const emitter = new EventEmitter();
 
 
 
-const Logger = require("./logger");
+// const Logger = require("./logger");
 
 // login("message");
 
-const logger = new Logger();
+// const logger = new Logger();
 
 
 
 // Register a Listener
-logger.on("messageLogged",(eventArg) => {
-    console.log("Listener Called ",eventArg);
-});
+// logger.on("messageLogged",(eventArg) => {
+//     console.log("Listener Called ",eventArg);
+// });
 
 // Raise Event
-logger.login("Pakistan");
+// logger.login("Pakistan");
 
 
 
